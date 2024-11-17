@@ -1,0 +1,46 @@
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+    - cp ${DEFAULT_ENV} .env
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+    - if: $CI_COMMIT_BRANCH == "prod"
+
+build_job:
+  stage: build
+  tags:
+    - python
+    - $CI_COMMIT_BRANCH
+  script:
+    - echo "Building the application..."
+    - docker compose build app
+
+# test_job:
+#   stage: test
+#   tags:
+#     - python
+#   script:
+#     - echo "Running tests..."
+
+
+deploy_job:
+  stage: deploy
+  tags:
+    - python
+    - $CI_COMMIT_BRANCH
+  script:
+    - echo "Deploying the application..."
+    - docker compose down
+    - docker compose up -d
+    - docker image prune -f --filter="dangling=true"
+    - sleep 5
+    - docker ps -a
+    - docker images
+    - docker logs api-gateway-module
+  needs:
+    - job: build_job

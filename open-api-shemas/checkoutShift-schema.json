@@ -1,0 +1,1924 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Efirit CheckoutShift Module",
+    "version": "0.2"
+  },
+  "paths": {
+    "/checkoutShift/checkoutShift/getCheckoutShifts": {
+      "get": {
+        "tags": [
+          "Кассовые смены"
+        ],
+        "summary": "Get Checkout Shift List",
+        "operationId": "get_checkout_shift_list_checkoutShift_checkoutShift_getCheckoutShifts_get",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "workerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workerid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workplaceid"
+            }
+          },
+          {
+            "name": "closed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Closed"
+            }
+          },
+          {
+            "name": "hidden",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hidden"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashShiftsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutShift/getCheckoutShift": {
+      "get": {
+        "tags": [
+          "Кассовые смены"
+        ],
+        "summary": "Get Checkout Shift",
+        "operationId": "get_checkout_shift_checkoutShift_checkoutShift_getCheckoutShift_get",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "workerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workerid"
+            }
+          },
+          {
+            "name": "checkoutShiftId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Checkoutshiftid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashShiftWithReceiptsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutShift/getLastCheckoutShift": {
+      "get": {
+        "tags": [
+          "Кассовые смены"
+        ],
+        "summary": "Get Last Checkout Shift",
+        "operationId": "get_last_checkout_shift_checkoutShift_checkoutShift_getLastCheckoutShift_get",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashShiftWithReceiptsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutShift/openCheckoutShift": {
+      "post": {
+        "tags": [
+          "Кассовые смены"
+        ],
+        "summary": "Open Checkout Shift",
+        "operationId": "open_checkout_shift_checkoutShift_checkoutShift_openCheckoutShift_post",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "workerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workerid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CashShiftOpenRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashShiftWithReceiptsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutShift/closeCheckoutShift": {
+      "patch": {
+        "tags": [
+          "Кассовые смены"
+        ],
+        "summary": "Close Checkout Shift",
+        "operationId": "close_checkout_shift_checkoutShift_checkoutShift_closeCheckoutShift_patch",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "workerId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workerid"
+            }
+          },
+          {
+            "name": "checkoutShiftId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Checkoutshiftid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CashShiftClosedWithReceiptsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/getCashReceipts": {
+      "get": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Get Checks",
+        "operationId": "get_checks_checkoutShift_checkoutReceipt_getCashReceipts_get",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storeid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workplaceid"
+            }
+          },
+          {
+            "name": "cashShiftId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cashshiftid"
+            }
+          },
+          {
+            "name": "timeStart",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timestart"
+            }
+          },
+          {
+            "name": "timeEnd",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timeend"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ReceiptStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Count"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/getCashReceipt": {
+      "get": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Get Check",
+        "operationId": "get_check_checkoutShift_checkoutReceipt_getCashReceipt_get",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "cashReceiptId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Cashreceiptid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/createCashReceipt": {
+      "post": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Add Check",
+        "operationId": "add_check_checkoutShift_checkoutReceipt_createCashReceipt_post",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Storeid"
+            }
+          },
+          {
+            "name": "checkoutShiftId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Checkoutshiftid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceiptCreateRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/updateCashReceipt": {
+      "patch": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Update Check",
+        "operationId": "update_check_checkoutShift_checkoutReceipt_updateCashReceipt_patch",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Storeid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          },
+          {
+            "name": "cashReceiptId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Cashreceiptid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceiptUpdateRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/closeCashReceipt": {
+      "patch": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Close Check",
+        "operationId": "close_check_checkoutShift_checkoutReceipt_closeCashReceipt_patch",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "cashReceiptId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Cashreceiptid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/checkoutReceipt/removeCashReceipt": {
+      "delete": {
+        "tags": [
+          "Чеки"
+        ],
+        "summary": "Remove Check",
+        "operationId": "remove_check_checkoutShift_checkoutReceipt_removeCashReceipt_delete",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Ownerid"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Organizationid"
+            }
+          },
+          {
+            "name": "cashReceiptId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Cashreceiptid"
+            }
+          },
+          {
+            "name": "workplaceId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Workplaceid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkoutShift/positionCheck/getPositions": {
+      "post": {
+        "tags": [
+          "Позиции чека"
+        ],
+        "summary": "Get Positions",
+        "operationId": "get_positions_checkoutShift_positionCheck_getPositions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": "array",
+                "title": "Body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PositionsChecksResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Positions Checkoutshift Positioncheck Getpositions Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CashShiftClosedWithReceiptsResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Date"
+          },
+          "closedDate": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Closeddate"
+          },
+          "organizationId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organizationid"
+          },
+          "ownerId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ownerid"
+          },
+          "storeId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Storeid"
+          },
+          "workplaceId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workplaceid"
+          },
+          "workerId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workerid"
+          },
+          "cashRegistrId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregistrid"
+          },
+          "closed": {
+            "type": "boolean",
+            "title": "Closed"
+          },
+          "hidden": {
+            "type": "boolean",
+            "title": "Hidden"
+          },
+          "cashReceipts": {
+            "items": {
+              "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+            },
+            "type": "array",
+            "title": "Cashreceipts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "number",
+          "date",
+          "closedDate",
+          "organizationId",
+          "ownerId",
+          "storeId",
+          "workplaceId",
+          "workerId",
+          "cashRegistrId",
+          "closed",
+          "hidden",
+          "cashReceipts"
+        ],
+        "title": "CashShiftClosedWithReceiptsResponse"
+      },
+      "CashShiftOpenRequestBody": {
+        "properties": {
+          "storeId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Storeid"
+          },
+          "workplaceId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workplaceid"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          },
+          "cashRegistrId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregistrid"
+          }
+        },
+        "type": "object",
+        "required": [
+          "storeId",
+          "workplaceId"
+        ],
+        "title": "CashShiftOpenRequestBody"
+      },
+      "CashShiftResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Date"
+          },
+          "closedDate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closeddate"
+          },
+          "organizationId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organizationid"
+          },
+          "ownerId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ownerid"
+          },
+          "storeId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Storeid"
+          },
+          "workplaceId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workplaceid"
+          },
+          "workerId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workerid"
+          },
+          "cashRegistrId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregistrid"
+          },
+          "closed": {
+            "type": "boolean",
+            "title": "Closed"
+          },
+          "hidden": {
+            "type": "boolean",
+            "title": "Hidden"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "number",
+          "date",
+          "closedDate",
+          "organizationId",
+          "ownerId",
+          "storeId",
+          "workplaceId",
+          "workerId",
+          "cashRegistrId",
+          "closed",
+          "hidden"
+        ],
+        "title": "CashShiftResponse"
+      },
+      "CashShiftWithReceiptsResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Date"
+          },
+          "closedDate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closeddate"
+          },
+          "organizationId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organizationid"
+          },
+          "ownerId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ownerid"
+          },
+          "storeId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Storeid"
+          },
+          "workplaceId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workplaceid"
+          },
+          "workerId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workerid"
+          },
+          "cashRegistrId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregistrid"
+          },
+          "closed": {
+            "type": "boolean",
+            "title": "Closed"
+          },
+          "hidden": {
+            "type": "boolean",
+            "title": "Hidden"
+          },
+          "cashReceipts": {
+            "items": {
+              "$ref": "#/components/schemas/ReceiptWithPositionsResponse"
+            },
+            "type": "array",
+            "title": "Cashreceipts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "number",
+          "date",
+          "closedDate",
+          "organizationId",
+          "ownerId",
+          "storeId",
+          "workplaceId",
+          "workerId",
+          "cashRegistrId",
+          "closed",
+          "hidden",
+          "cashReceipts"
+        ],
+        "title": "CashShiftWithReceiptsResponse"
+      },
+      "CashShiftsResponse": {
+        "properties": {
+          "checkoutShifts": {
+            "items": {
+              "$ref": "#/components/schemas/CashShiftResponse"
+            },
+            "type": "array",
+            "title": "Checkoutshifts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "checkoutShifts"
+        ],
+        "title": "CashShiftsResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "PositionCreateRequest": {
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Productid"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "price": {
+            "type": "integer",
+            "title": "Price"
+          }
+        },
+        "type": "object",
+        "required": [
+          "productId",
+          "count",
+          "price"
+        ],
+        "title": "PositionCreateRequest"
+      },
+      "PositionResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "productId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Productid"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "price": {
+            "type": "integer",
+            "title": "Price"
+          },
+          "position": {
+            "type": "integer",
+            "title": "Position"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "productId",
+          "count",
+          "price",
+          "position"
+        ],
+        "title": "PositionResponse"
+      },
+      "PositionsChecksResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "product_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "price": {
+            "type": "integer",
+            "title": "Price"
+          },
+          "position": {
+            "type": "integer",
+            "title": "Position"
+          },
+          "owner_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Owner Id"
+          },
+          "check_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Check Id"
+          },
+          "price_may_change_in_cash_receipt": {
+            "type": "boolean",
+            "title": "Price May Change In Cash Receipt"
+          },
+          "price_min_in_cash_receipt": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Price Min In Cash Receipt"
+          },
+          "price_max_in_cash_receipt": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Price Max In Cash Receipt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "product_id",
+          "count",
+          "price",
+          "position",
+          "owner_id",
+          "check_id",
+          "price_may_change_in_cash_receipt",
+          "price_min_in_cash_receipt",
+          "price_max_in_cash_receipt"
+        ],
+        "title": "PositionsChecksResponse"
+      },
+      "ReceiptCreateRequestBody": {
+        "properties": {
+          "reasonId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasonid"
+          },
+          "cashRegisterCheckNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregisterchecknumber"
+          },
+          "fiscalDocumentNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscaldocumentnumber"
+          },
+          "sum": {
+            "type": "integer",
+            "title": "Sum"
+          },
+          "typeOperation": {
+            "$ref": "#/components/schemas/TypeOperation"
+          },
+          "typePayment": {
+            "$ref": "#/components/schemas/TypePayment"
+          },
+          "taxSystem": {
+            "$ref": "#/components/schemas/TypeTaxation"
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/PositionCreateRequest"
+            },
+            "type": "array",
+            "title": "Positions",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "sum",
+          "typeOperation",
+          "typePayment",
+          "taxSystem"
+        ],
+        "title": "ReceiptCreateRequestBody"
+      },
+      "ReceiptStatus": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "title": "ReceiptStatus"
+      },
+      "ReceiptUpdateRequestBody": {
+        "properties": {
+          "reasonId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasonid"
+          },
+          "cashRegisterCheckNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregisterchecknumber"
+          },
+          "fiscalDocumentNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscaldocumentnumber"
+          },
+          "sum": {
+            "type": "integer",
+            "title": "Sum"
+          },
+          "typeOperation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypeOperation"
+              }
+            ]
+          },
+          "typePayment": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypePayment"
+              }
+            ]
+          },
+          "taxSystem": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypeTaxation"
+              }
+            ]
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/PositionCreateRequest"
+            },
+            "type": "array",
+            "title": "Positions",
+            "default": []
+          }
+        },
+        "type": "object",
+        "title": "ReceiptUpdateRequestBody"
+      },
+      "ReceiptWithPositionsResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "ownerId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ownerid"
+          },
+          "storeId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Storeid"
+          },
+          "workplaceId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workplaceid"
+          },
+          "organizationId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organizationid"
+          },
+          "checkoutShiftId": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Checkoutshiftid"
+          },
+          "reasonId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasonid"
+          },
+          "cashRegisterCheckNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cashregisterchecknumber"
+          },
+          "fiscalDocumentNumber": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiscaldocumentnumber"
+          },
+          "reasonCheckName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoncheckname",
+            "default": ""
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Date"
+          },
+          "sum": {
+            "type": "integer",
+            "title": "Sum"
+          },
+          "typeOperation": {
+            "$ref": "#/components/schemas/TypeOperation"
+          },
+          "typePayment": {
+            "$ref": "#/components/schemas/TypePayment"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReceiptStatus"
+          },
+          "taxSystem": {
+            "$ref": "#/components/schemas/TypeTaxation"
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/PositionResponse"
+            },
+            "type": "array",
+            "title": "Positions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "ownerId",
+          "storeId",
+          "workplaceId",
+          "organizationId",
+          "checkoutShiftId",
+          "reasonId",
+          "cashRegisterCheckNumber",
+          "fiscalDocumentNumber",
+          "reasonCheckName",
+          "date",
+          "sum",
+          "typeOperation",
+          "typePayment",
+          "status",
+          "taxSystem",
+          "positions"
+        ],
+        "title": "ReceiptWithPositionsResponse"
+      },
+      "TypeOperation": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "title": "TypeOperation"
+      },
+      "TypePayment": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "title": "TypePayment"
+      },
+      "TypeTaxation": {
+        "const": 0,
+        "title": "TypeTaxation"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+services:
+  app:
+    container_name: api-gateway-module
+    ports:
+      - "${API_GATEWAY_PORT}:${API_GATEWAY_PORT}"
+    restart: unless-stopped
+    stop_grace_period: 10s 
+    environment:
+      MODE: ${MODE}
+      ORIGINS: ${COMMON_ORIGINS}
+      API_GATEWAY_PORT: ${API_GATEWAY_PORT}
+    networks:
+      - default-net
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["/app/docker/app.sh"]
+
+networks:
+  default-net:
+    external: true
